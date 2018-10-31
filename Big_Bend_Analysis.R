@@ -84,3 +84,24 @@ p3_list <- fc$Products3[fc$Coins>=1]
 p3_total <- as.data.frame(table(p3_list))
 barplot(p3_total$Freq)
 barplot(p3_total$Freq[!p3_total$p3_list==-"None"])
+
+#USNG Total Coins - All Respondents
+usng_coin_totalsum <- aggregate(fc$Coins, by=list(USNGNumber=fc$USNG), FUN=sum)
+summary(usng_coin_total)
+print(usng_coin_total[usng_coin_total$x>=1,])
+
+usng_coin_totalmin <- aggregate(fc$Coins, by=list(USNGNumber=fc$USNG), FUN=min)
+print(usng_coin_totalmin)
+
+usng_coin_totalmax <- aggregate(fc$Coins, by=list(USNGNumber=fc$USNG), FUN=max)
+print(usng_coin_totalmax)
+
+usng_coin_totalave <- aggregate(fc$Coins, by=list(USNGNumber=fc$USNG), FUN=ave)
+print(usng_coin_totalave)
+
+usng_coin_totalsd <- aggregate(fc$Coins, by=list(USNGNumber=fc$USNG), FUN=sd)
+print(usng_coin_totalsd)
+
+#USNG Justification Types and Counts - All Respondents
+#########May need to review and fix code
+usng_j1 <- with(fc, as.data.frame(table(fc$USNG[fc$Coins>=1], fc$Justification1[fc$Coins>=1])))
